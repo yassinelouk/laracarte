@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +22,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('laracarte.about');
 });
+
+Route::get('/contact','MessageController@index')->name('contact');
 

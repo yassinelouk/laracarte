@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\ContactMessageCreated;
 
 
 /*
@@ -14,14 +15,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('laracarte.home');
-});
+Route::get('/',
+    [
+    'as' =>'home_path',
+    'uses' => 'PagesController@home'
+    ]);
+Route::get('/about',
+    [
+    'as' =>'about_path',
+    'uses' => 'PagesController@about'
+    ]);
+
+    Route::get('/contact',
+    [
+    'as' =>'contact_path',
+    'uses' => 'MessageController@create'
+    ]);
+
+    Route::post('/contact',
+    [
+    'as' =>'contact_path',
+    'uses' => 'MessageController@store'
+    ]);
+
+    Route::get('/test-email',function()
+    {
+        return new ContactMessageCreated('louk','louk@gmail.com','hello louk');
+    });
 
 
-Route::get('/about', function () {
-    return view('laracarte.about');
-});
 
-Route::get('/contact','MessageController@index')->name('contact');
+
 

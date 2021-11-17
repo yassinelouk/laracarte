@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ContactRequest;
+use App\Mail\ContactMessageCreated;
+use App\Models\Message;
 
 class MessageController extends Controller
 {
@@ -14,7 +18,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-         return view('laracarte.contact');
+
 
     }
 
@@ -25,6 +29,7 @@ class MessageController extends Controller
      */
     public function create()
     {
+        return view('laracarte.contact');
     }
 
     /**
@@ -33,9 +38,16 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+        $message = Message::create($request->only('name','email','message'));
+
+
+        Mail::to("yassine.jordan@gmail.com")
+        ->send(new ContactMessageCreated($message));
+
+        flashy()->success('Nous vous répondrons dans les plus bref délais!');
+        return redirect()->route('home_path');
     }
 
     /**
@@ -44,9 +56,9 @@ class MessageController extends Controller
      * @param  \App\Models\rc  $rc
      * @return \Illuminate\Http\Response
      */
-    public function show(rc $rc)
+    public function show(Request $request)
     {
-        //
+
     }
 
     /**
@@ -55,7 +67,7 @@ class MessageController extends Controller
      * @param  \App\Models\rc  $rc
      * @return \Illuminate\Http\Response
      */
-    public function edit(rc $rc)
+    public function edit(Request $request)
     {
         //
     }
@@ -67,7 +79,7 @@ class MessageController extends Controller
      * @param  \App\Models\rc  $rc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, rc $rc)
+    public function update(Request $request)
     {
         //
     }
@@ -78,7 +90,7 @@ class MessageController extends Controller
      * @param  \App\Models\rc  $rc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(rc $rc)
+    public function destroy($id)
     {
         //
     }

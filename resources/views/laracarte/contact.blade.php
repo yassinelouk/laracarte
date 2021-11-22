@@ -5,11 +5,11 @@
     <div class="container">
 
         <div class="row">
-            <div class="row justify-content-center align-items-end  text-md-left">
+            <div class="col-md-8 col-sm-10 mx-auto">
                 <h2>Get In Touch</h2>
                 <p class="text-muted">If you having trouble with this service, please ask for help.</p>
 
-                <form action="{{ route('contact_path') }}" method="POST" >
+                <form action="{{ route('contact.store') }}" method="POST" >
                     @csrf
 
                     <div class="form-group">

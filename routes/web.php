@@ -15,35 +15,24 @@ use App\Mail\ContactMessageCreated;
 |
 */
 
-Route::get('/',
-    [
-    'as' =>'home_path',
-    'uses' => 'PagesController@home'
-    ]);
-Route::get('/about',
-    [
-    'as' =>'about_path',
-    'uses' => 'PagesController@about'
-    ]);
 
-    Route::get('/contact',
-    [
-    'as' =>'contact_path',
-    'uses' => 'MessageController@create'
-    ]);
-
-    Route::post('/contact',
-    [
-    'as' =>'contact_path',
-    'uses' => 'MessageController@store'
-    ]);
-
-    Route::get('/test-email',function()
-    {
-        return new ContactMessageCreated('louk','louk@gmail.com','hello louk');
-    });
+ Route::view('/', 'laracarte.home')->name('home');
+ Route::view('/about', 'laracarte.about')->name('about');
+ Route::get('/contact','MessageController@create')->name('contact.create');
+  Route::post('/contact','MessageController@store')->name('contact.store');
 
 
 
 
 
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

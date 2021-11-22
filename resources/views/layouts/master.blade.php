@@ -10,10 +10,6 @@
 </head>
 <style>
 
-    footer
-    {
-        margin: 4em 0;
-    }
 
 </style>
 <body>

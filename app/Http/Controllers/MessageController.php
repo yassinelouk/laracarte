@@ -47,7 +47,7 @@ class MessageController extends Controller
         ->send(new ContactMessageCreated($message));
 
         flashy()->success('Nous vous répondrons dans les plus bref délais!');
-        return redirect()->route('home_path');
+        return redirect()->route('home');
     }
 
     /**

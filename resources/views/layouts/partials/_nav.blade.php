@@ -8,10 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarsExample09">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="{{ route('home_path') }}">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" href="{{ route('about_path') }}">About</a>
+            <a class="nav-link" href="{{ route('about') }}">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link ">Artisan</a>
@@ -29,12 +29,12 @@
           </li>
 
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('contact_path') }}">Contact</a>
+              <a class="nav-link" href="{{ route('contact.create') }}">Contact</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a class="dropdown-item" href="#" style="color: white">Login</a></li>
-              <li><a class="dropdown-item" href="#" style="color: white">Register</a></li>
+            <li><a class="dropdown-item" href="/home" style="color: white">Login</a></li>
+              <li><a class="dropdown-item" href="/register" style="color: white">Register</a></li>
         </ul>
       </div>
   </nav>
